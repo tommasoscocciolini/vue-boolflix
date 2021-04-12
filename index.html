@@ -33,7 +33,7 @@
       <div class="flip-card" v-for="result in filmResult">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img :src="getPoster(result)" alt="film poster">
+            <img :src="getPoster(result)" :alt="result.original_title" style="width: 150px; height: 200px;">
           </div>
           <div class="flip-card-back">
             <p class="flip-card-back-title">Titolo: {{result.title}}</p>
@@ -42,6 +42,7 @@
             <span>Media Voto: {{result.vote_average}}</span>
           </div>
         </div>
+
       </div>
 
     </div>

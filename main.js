@@ -19,7 +19,7 @@ var app= new Vue({
     getPoster: function(film) {
       var posterLink = film.poster_path;
       console.log(posterLink);
-      return 'https://api.themoviedb.org'+posterLink;
+      return 'https://image.tmdb.org/t/p/w200'+posterLink;
     },
   },
   created: function () {
