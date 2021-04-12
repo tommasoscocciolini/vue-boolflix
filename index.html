@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Boolflix</title>
+
+  <link rel="stylesheet" href="./master.css">
+</head>
+<body>
+  <div id="root">
+    <div class="top">
+      <h1>BOOLFLIX</h1>
+      <div class="search-zone">
+        <input type="text" name="" value="" v-model="nameSearch">
+        <button type="button" name="search" @click="searchFilm(nameSearch)">Search</button>
+
+      </div>
+
+
+    </div>
+    <div class="mid">
+      <!-- <div class="film-card"
+            v-for="result in filmResult">
+        <div class="card-cover">
+          <img :src="getPoster(result)" alt="">
+        </div>
+        <span class="title">{{result.title}}</span>
+        <span>{{result.original_title}}</span>
+        <span>{{result.original_language}}</span>
+      </div> -->
+      <div class="flip-card" v-for="result in filmResult">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img :src="getPoster(result)" alt="film poster">
+          </div>
+          <div class="flip-card-back">
+            <p class="flip-card-back-title">Titolo: {{result.title}}</p>
+            <span>Titolo originale: {{result.original_title}}</span>
+            <span>Lingua: {{result.original_language}}</span>
+            <span>Media Voto: {{result.vote_average}}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="bot">
+
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="./main.js" charset="utf-8"></script>
+</body>
+</html>
