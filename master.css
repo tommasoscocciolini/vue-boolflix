@@ -6,11 +6,12 @@
 
 .top{
   width: 100%;
+  padding: 0 40px;
   height: 80px;
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: black;
   position: fixed;
   z-index: 1;
@@ -21,8 +22,28 @@
   align-items: center;
 }
 
-.top input {
+.top .search-zone{
+
+}
+
+.top .search-zone input {
   height: 30px;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+}
+
+.top .search-zone button {
+  padding: 2px;
+  border-radius: 20px;
+  border: 2px solid red;
+  background-color: black;
+  color: #ffff;
+  margin-left: 5px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
 
 .mid{
@@ -108,4 +129,8 @@
 .flip-card-back .flip-card-back-title{
   font-size: 1.2em;
   font-style: italic;
+}
+
+.flip-card-back img{
+  align-self:center;
 }

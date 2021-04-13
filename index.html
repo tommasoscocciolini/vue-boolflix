@@ -13,9 +13,8 @@
     <div class="top">
       <h1>BOOLFLIX</h1>
       <div class="search-zone">
-        <input type="text" name="" value="" v-model="nameSearch" @keyup.enter="searchFilm(nameSearch)">
+        <input type="text" name="" value="" v-model="nameSearch" placeholder="Cerca Film o serieTV" @keyup.enter="searchFilm(nameSearch)">
         <button type="button" name="search" @click="searchFilm(nameSearch)">Search</button>
-
       </div>
 
 
@@ -30,15 +29,16 @@
         <span>{{result.original_title}}</span>
         <span>{{result.original_language}}</span>
       </div> -->
-      <div class="flip-card" v-for="result in filmResult">
+      <div class="flip-card" v-for="result in queryResult">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img :src="getPoster(result)" :alt="result.original_title">
           </div>
-          <div class="flip-card-back">
-            <p class="flip-card-back-title">Titolo: {{result.title}}</p>
-            <span>Titolo originale: {{result.original_title}}</span>
-            <span>Lingua: {{result.original_language}}</span>
+          <div class="flip-card-back" style="background-image: getPoster(result)">
+            <p class="flip-card-back-title">Titolo: {{result.title}}{{result.name}}</p>
+            <span>Titolo originale: {{result.original_title}}{{result.original_name}}</span>
+            <img width="30" height="20" :src="getFlag(result.original_language)" alt="">
+            <!-- <span id="flag">Lingua: {{getFlag(result.original_language)}}</span> -->
             <span>Media Voto: {{result.vote_average}}</span>
           </div>
         </div>
