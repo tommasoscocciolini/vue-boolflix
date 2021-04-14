@@ -64,8 +64,8 @@
             <img :src="getPoster(result)" :alt="result.original_title">
           </div>
           <div class="flip-card-back">
-            <p class="flip-card-back-title">{{cutTitle(result.title)}}{{result.name}}</p>
-            <span>Original title: {{cutTitle(result.original_title)}}{{result.original_name}}</span>
+            <p class="flip-card-back-title">{{result.title}}{{result.name}}</p>
+            <span>Original title: {{result.original_title}}{{result.original_name}}</span>
             <img width="30" height="20" style="margin:10px;" :src="getFlag(result.original_language)" alt="">
             <!-- <span id="flag">Lingua: {{getFlag(result.original_language)}}</span> -->
             <div>
