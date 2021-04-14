@@ -64,15 +64,15 @@
             <img :src="getPoster(result)" :alt="result.original_title">
           </div>
           <div class="flip-card-back">
-            <p class="flip-card-back-title">Title: {{result.title}}{{result.name}}</p>
-            <span>Original title: {{result.original_title}}{{result.original_name}}</span>
+            <p class="flip-card-back-title">{{cutTitle(result.title)}}{{result.name}}</p>
+            <span>Original title: {{cutTitle(result.original_title)}}{{result.original_name}}</span>
             <img width="30" height="20" style="margin:10px;" :src="getFlag(result.original_language)" alt="">
             <!-- <span id="flag">Lingua: {{getFlag(result.original_language)}}</span> -->
             <div>
               <i class="fas fa-star" v-for="stars in rateToStarsFull(result.vote_average)"></i>
               <i style="margin-left: -4px;" class="far fa-star" v-for="stars in rateToStarsEmpty(result.vote_average)"></i>
             </div>
-            <span class="avgRating">{{result.vote_average}}</span>
+            <span class="overview">{{cutOverview(result.overview)}}</span>
           </div>
         </div>
       </div>

@@ -60,6 +60,10 @@
   font-size: 1.2em;
 }
 
+.tvseries-hover-btn i, .movies-hover-btn i{
+  padding-right: 3px;
+}
+
 .movies-hover-btn:hover .sections-film{
   display: block;
 }
@@ -133,45 +137,12 @@ textarea:focus, input:focus{
   color: lightgrey;
 }
 
-.bot{
-  height: auto;
-  background-color: black;
-  padding-top: 50px;
-  height: 400px;
-}
 
-.container{
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.bot ul{
-  display: block;
-  color: #ffff;
-  margin: 0 40px;
-  text-align: center;
-}
-
-.bot ul li{
-  list-style: none;
-  margin-top: 10px;
-  padding: 10px -10px;
-  text-align: center;
-}
-
-.list-title{
-  font-size: 1.5em;
-  font-weight: 600;
-}
-
-.list-element{
-  cursor: pointer;
-}
 
 .mid{
   background-color: #2b2b2b;
   padding-top: 20px;
+  padding-bottom: 50px;
   height: auto;
   width: 100%;
   display: flex;
@@ -242,11 +213,57 @@ textarea:focus, input:focus{
   align-self:center;
 }
 
-i.fas{
+i.fa-star{
   color: yellow;
 }
 
+i.far{
+  color: #ffff;
+}
+
+.overview{
+  padding-top: 5px;
+}
+
+.bot{
+  background-color: black;
+  padding: 50px 0;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+.bot ul{
+  display: block;
+  color: #ffff;
+  margin: 0 40px;
+  text-align: center;
+}
+
+.bot ul li{
+  list-style: none;
+  margin-top: 10px;
+  padding: 10px -10px;
+  text-align: center;
+}
+
+.list-title{
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.list-element{
+  cursor: pointer;
+}
+
+
 @media all and (max-width: 768px) {
+  .titlepage{
+    font-size: 1.3em;
+  }
+
   .ddowns div span{
     display: none;
   }
@@ -258,9 +275,29 @@ i.fas{
   .top h1{
     left: 25%;
   }
+
+  .flip-card {
+    background-color: transparent;
+    width: 130px;
+    max-width: 200px;
+    height: 200px;
+
+    display: flex;
+    flex-direction:column;
+    perspective: 1000px;
+    margin: 15px;
+  }
+
+  .overview{
+    display: none;
+  }
 }
 
 @media all and (max-width: 600px) {
+  .top{
+    padding: 0;
+  }
+
   .search-zone{
     position: relative;
   }
@@ -274,7 +311,7 @@ i.fas{
   .search-zone input.show{
     position: absolute;
     top: 100%;
-    left: -200%;
+    left: -300%;
     z-index: 100;
     display: block;
   }

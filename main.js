@@ -122,6 +122,27 @@ var app= new Vue({
       }
     },
 
+    cutOverview: function(overview) {
+      var ovW = overview;
+      if (overview.length>100) {
+
+        overview = overview.slice(0,100);
+        overview = overview + '...';
+        return overview;
+      } else return overview;
+    },
+
+    cutTitle: function(title) {
+      var ttl = title;
+      console.log(ttl);
+      if (title.length>30) {
+
+        title = title.slice(0,30);
+        title = title + '...';
+        return title;
+      } else return title;
+    }
+
   },
   created() {
     axios.get(`${this.uri}/movie/upcoming?api_key=${this.api_key}`)
