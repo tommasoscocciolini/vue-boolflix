@@ -5,20 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Boolflix</title>
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   <link rel="stylesheet" href="./master.css">
 </head>
 <body>
   <div id="root">
     <div class="top">
-      <h1>BOOLFLIX</h1>
+      <h1 onclick="window.location.reload()">BOOLFLIX</h1>
+
+      <div class="sections-film">
+        <button type="button" name="search" @click="popularMovies()">Popular Movies</button>
+        <button type="button" name="search" @click="topRatedMovies()">Top Rated Movies</button>
+      </div>
+      <div class="sections-tvseries">
+        <button type="button" name="search" @click="popularTV()">Popular TV-series</button>
+        <button type="button" name="search" @click="topRatedTV()">Top Rated TV-series</button>
+      </div>
+
       <div class="search-zone">
         <input type="text" name="" value="" v-model="nameSearch" placeholder="Cerca Film o serieTV" @keyup.enter="searchFilm(nameSearch)">
         <button type="button" name="search" @click="searchFilm(nameSearch)">Search</button>
       </div>
-
-
     </div>
+    <div class="titlepage" v-html="titlePage"></div>
     <div class="mid">
       <!-- <div class="film-card"
             v-for="result in filmResult">
@@ -34,12 +45,16 @@
           <div class="flip-card-front">
             <img :src="getPoster(result)" :alt="result.original_title">
           </div>
-          <div class="flip-card-back" style="background-image: getPoster(result)">
+          <div class="flip-card-back">
             <p class="flip-card-back-title">Titolo: {{result.title}}{{result.name}}</p>
             <span>Titolo originale: {{result.original_title}}{{result.original_name}}</span>
             <img width="30" height="20" :src="getFlag(result.original_language)" alt="">
             <!-- <span id="flag">Lingua: {{getFlag(result.original_language)}}</span> -->
-            <span>Media Voto: {{result.vote_average}}</span>
+            <div>
+              <i class="fas fa-star" v-for="stars in rateToStarsFull(result.vote_average)"></i>
+              <i style="margin-left: -4px;" class="far fa-star" v-for="stars in rateToStarsEmpty(result.vote_average)"></i>
+            </div>
+            <span class="avgRating">{{result.vote_average}}</span>
           </div>
         </div>
 
@@ -47,8 +62,16 @@
 
     </div>
     <div class="bot">
-
-
+      <div class="container">
+        <ul>MOVIES
+          <li>Top Rated</li>
+          <li>Popular</li>
+        </ul>
+        <ul>Tv SERIES
+          <li>Top Rated</li>
+          <li>Popular</li>
+        </ul>
+      </div>
     </div>
   </div>
 
