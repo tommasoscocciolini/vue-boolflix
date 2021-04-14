@@ -13,20 +13,38 @@
 <body>
   <div id="root">
     <div class="top">
+
+      <div class="ddowns">
+        <div class="movies-ddown">
+          <div class="movies-hover-btn">
+            <i class="fas fa-film"></i>
+            <span>Movies</span>
+
+            <div class="sections-film">
+              <button type="button" name="search" @click="popularMovies()">Popular Movies</button>
+              <button type="button" name="search" @click="topRatedMovies()">Top Rated Movies</button>
+              <button type="button" name="search" @click="upcomingMovies()">Upcoming</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tvseries-ddown">
+          <div class="tvseries-hover-btn">
+            <i class="fas fa-tv"></i>
+            <span>Tv Shows</span>
+            <div class="sections-tvseries">
+              <button type="button" name="search" @click="popularTV()">Popular TV-series</button>
+              <button type="button" name="search" @click="topRatedTV()">Top Rated TV-series</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <h1 onclick="window.location.reload()">BOOLFLIX</h1>
 
-      <div class="sections-film">
-        <button type="button" name="search" @click="popularMovies()">Popular Movies</button>
-        <button type="button" name="search" @click="topRatedMovies()">Top Rated Movies</button>
-      </div>
-      <div class="sections-tvseries">
-        <button type="button" name="search" @click="popularTV()">Popular TV-series</button>
-        <button type="button" name="search" @click="topRatedTV()">Top Rated TV-series</button>
-      </div>
-
       <div class="search-zone">
-        <input type="text" name="" value="" v-model="nameSearch" placeholder="Cerca Film o serieTV" @keyup.enter="searchFilm(nameSearch)">
-        <button type="button" name="search" @click="searchFilm(nameSearch)">Search</button>
+        <input :class="(shown) ? 'show' : ''" type="text" name="" value="" v-model="nameSearch" placeholder="Search..." @keyup.enter="searchFilm(nameSearch)">
+        <button type="button" name="search" @click="searchFilm(nameSearch);  showInputSearch()"><i class="fas fa-search"></i> </button>
       </div>
     </div>
     <div class="titlepage" v-html="titlePage"></div>
@@ -46,9 +64,9 @@
             <img :src="getPoster(result)" :alt="result.original_title">
           </div>
           <div class="flip-card-back">
-            <p class="flip-card-back-title">Titolo: {{result.title}}{{result.name}}</p>
-            <span>Titolo originale: {{result.original_title}}{{result.original_name}}</span>
-            <img width="30" height="20" :src="getFlag(result.original_language)" alt="">
+            <p class="flip-card-back-title">Title: {{result.title}}{{result.name}}</p>
+            <span>Original title: {{result.original_title}}{{result.original_name}}</span>
+            <img width="30" height="20" style="margin:10px;" :src="getFlag(result.original_language)" alt="">
             <!-- <span id="flag">Lingua: {{getFlag(result.original_language)}}</span> -->
             <div>
               <i class="fas fa-star" v-for="stars in rateToStarsFull(result.vote_average)"></i>
@@ -57,19 +75,21 @@
             <span class="avgRating">{{result.vote_average}}</span>
           </div>
         </div>
-
       </div>
 
     </div>
     <div class="bot">
       <div class="container">
-        <ul>MOVIES
-          <li>Top Rated</li>
-          <li>Popular</li>
+        <ul>
+          <li class="list-title">Movies</li>
+          <li class="list-element" @click="topRatedMovies()">Top Rated</li>
+          <li class="list-element" @click="popularMovies()">Popular</li>
+          <li class="list-element" @click="upcomingMovies()">Upcoming</li>
         </ul>
-        <ul>Tv SERIES
-          <li>Top Rated</li>
-          <li>Popular</li>
+        <ul>
+          <li class="list-title">TV Series</li>
+          <li class="list-element" @click="topRatedTV()">Top Rated</li>
+          <li class="list-element" @click="popularTV()">Popular</li>
         </ul>
       </div>
     </div>

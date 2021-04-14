@@ -9,6 +9,7 @@ var app= new Vue({
     starFull: '<i class="fas fa-star"></i>',
     emptyStar: '<i class="far fa-star"></i>',
     titlePage: 'Popular Movies',
+    shown: false,
   },
   methods: {
     searchFilm: function (input) {
@@ -24,7 +25,8 @@ var app= new Vue({
                     this.queryResult = [...this.queryResult, ...response.data.results];
                   });
             });
-            this.titlePage = 'Search Results'
+            this.titlePage = 'Search Results';
+            this.shown = false;
       }
 
     },
@@ -82,6 +84,16 @@ var app= new Vue({
           this.titlePage = 'Top Rated Movies'
     },
 
+    upcomingMovies: function() {
+      axios.get(`${this.uri}/movie/upcoming?api_key=${this.api_key}&language=it`)
+          .then((response) => {
+            //console.log(response.data.results);
+            //console.log(response.data);
+            this.queryResult = [ ...response.data.results];
+          });
+          this.titlePage = 'Upcoming Movies'
+    },
+
     popularTV: function() {
       axios.get(`${this.uri}/tv/popular?api_key=${this.api_key}&language=it`)
           .then((response) => {
@@ -102,13 +114,22 @@ var app= new Vue({
           this.titlePage = 'Top Rated Tv series'
     },
 
+    showInputSearch: function () {
+      if (this.shown == true) {
+        this.shown = false;
+      } else {
+        this.shown = true;
+      }
+    },
+
   },
   created() {
-    axios.get(`${this.uri}/movie/popular?api_key=${this.api_key}`)
+    axios.get(`${this.uri}/movie/upcoming?api_key=${this.api_key}`)
         .then((response) => {
           //console.log(response.data.results);
           //console.log(response.data);
           this.queryResult = [...this.queryResult, ...response.data.results];
         });
+        this.titlePage = 'Upcoming Movies'
   }
 });
